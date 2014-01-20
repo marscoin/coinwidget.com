@@ -9,7 +9,11 @@ Donations welcome:
 
 MIT License (MIT)
 
+<<<<<<< HEAD
 Copyright (c) 2013 http://coinwidget.com/
+=======
+Copyright (c) 2013 http://coinwidget.com/
+>>>>>>> 7ae42c5fc4247905b728c8741736a68e856d0746
 Copyright (c) 2013 http://scotty.cc/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -37,6 +41,7 @@ var CoinWidgetComCounter = 0;
 
 if (typeof CoinWidgetCom != 'object')
 var CoinWidgetCom = {
+
 	source: 'http://widget.marscoin.org/widget/'
 	, config: []
 	, go :function(config) {
@@ -48,6 +53,7 @@ var CoinWidgetCom = {
 	}
 	, validate: function(config) {
 		var $accepted = [];
+
 		$accepted['currencies'] = ['bitcoin','litecoin','marscoin'];
 		$accepted['counters'] = ['count','amount','hide'];
 		$accepted['alignment'] = ['al','ac','ar','bl','bc','br'];
@@ -84,11 +90,13 @@ var CoinWidgetCom = {
 			CoinWidgetCom.window_resize();
 		});
 		setTimeout(function(){
+
 			/* this delayed start gives the page enough time to
 			   render multiple widgets before pinging for counts.
 			*/
 			CoinWidgetCom.build();
 		},800);
+
 	}
 	, build: function(){
 		$containers = $("span[data-coinwidget-instance]");
@@ -118,11 +126,13 @@ var CoinWidgetCom = {
 			of just the button change this occurence of $(obj) to $(obj).parent(),
 			do the same for the occurences within the switch statement. */
 			$pos = $(obj).offset();
+
 			switch ($config.alignment) {
 				default:
 				case 'al': /* above left */
 					$top = $pos.top - $(coin_window).outerHeight() - 10;
 					$left = $pos.left;
+
 					break;
 				case 'ac': /* above center */
 					$top = $pos.top - $(coin_window).outerHeight() - 10;
@@ -208,6 +218,7 @@ var CoinWidgetCom = {
 				$html += '<span class="COINWIDGETCOM_COUNT">0<small>'+$config.lbl_count+'</small></span>'
 				  	  + '<span class="COINWIDGETCOM_AMOUNT end">0.00<small>'+$config.lbl_amount+'</small></span>'
 				  	  ;
+
 			}
 			if ($config.qrcode) {
 				$html += '<img class="COINWIDGETCOM_QRCODE" data-coinwidget-instance="'+$instance+'" src="'+CoinWidgetCom.source+'icon_qrcode.png" width="16" height="16" />'
@@ -262,7 +273,9 @@ var CoinWidgetCom = {
 			$(coin_window).find('.COINWIDGETCOM_COUNT').html($counters.count+ '<small>'+$config.lbl_count+'</small>');
 			$(coin_window).find('.COINWIDGETCOM_AMOUNT').html($counters.amount.toFixed($config.decimals)+ '<small>'+$config.lbl_amount+'</small>');
 		}
+
 		if (typeof $config.onShow == 'function')
+
 			$config.onShow();
 	}
 	, hide: function($instance) {
@@ -275,7 +288,9 @@ var CoinWidgetCom = {
 	}
 	, in_array: function(needle,haystack) {
 		for (i=0;i<haystack.length;i++) {
+
 			if (haystack[i] == needle) {
+
 				return true;
 			}
 		}
